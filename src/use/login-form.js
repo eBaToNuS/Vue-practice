@@ -1,8 +1,11 @@
 import { computed, watch } from "vue";
 import * as yup from "yup";
 import { useField, useForm } from "vee-validate";
+import { useStore } from "vuex";
 
 export function useLoginForm() {
+  const store = useStore();
+
   const { handleSubmit, isSubmitting, submitCount } = useForm();
 
   const {
@@ -31,8 +34,9 @@ export function useLoginForm() {
       .min(6, `Введи больше символов, тугодум!`)
   );
 
-  const onSubmit = handleSubmit((values) => {
+  const onSubmit = handleSubmit(async (values) => {
     console.log("Form", values);
+    await store.dispatch("auth/login", values);
   });
 
   const isTooManyAttempts = computed(() => submitCount.value >= 3);
