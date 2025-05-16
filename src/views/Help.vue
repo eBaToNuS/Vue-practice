@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div class="card"><h1>Помощь</h1></div>
 </template>
 
 <script>
