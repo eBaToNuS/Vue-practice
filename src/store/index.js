@@ -13,7 +13,7 @@ export default createStore({
   },
   getters: {},
   mutations: {
-    setMeddage(state, message) {
+    setMessage(state, message) {
       state.message = message;
     },
     clearMessage(state) {

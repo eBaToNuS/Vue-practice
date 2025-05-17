@@ -29,16 +29,18 @@ export default {
           returnSecureToken: true,
         });
         commit("setToken", data.idToken);
+        dispatch("clearMessage", { root: true });
       } catch (e) {
         dispatch(
           "setMessage",
           {
             value: error(e.response.data.error.message),
-            type: danger,
+            type: "danger",
           },
           { root: true }
         );
-        console.log("data", error(e.response.data.error.message));
+        console.log(error(e.response.data.error.message));
+        console.log("data", e.response.data.error.message);
         throw new Error();
       }
     },
