@@ -32,11 +32,14 @@
 </template>
 
 <script>
-import { useRequestForm } from "/src/use/request-form.js";
+import { useRequestForm } from "@/use/request-form.js";
+import { useStore } from "vuex";
 export default {
   emits: ["created"],
   setup(_, { emit }) {
-    const submit = (values) => {
+    const store = useStore();
+    const submit = async (values) => {
+      await store.dispatch("request/create", values);
       console.log(values);
       emit("created");
     };

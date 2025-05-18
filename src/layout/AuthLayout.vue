@@ -7,7 +7,7 @@
 
 <script>
 import Auth from "@/views/Auth.vue";
-import AppMessage from "../components/ui/AppMessage.vue";
+import AppMessage from "@/components/ui/AppMessage";
 export default {
   components: { Auth, AppMessage },
 };
